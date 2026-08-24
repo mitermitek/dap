@@ -1,14 +1,21 @@
-<fieldset>
-  <legend>03 - Demandes en cours</legend>
+<fieldset class="dap-card">
+  <legend class="dap-legend bg-blue">03 - Demandes en cours</legend>
 
-  <ul>
+  <ul class="mt-4 flex flex-col gap-3">
     @for (booking of bookings(); track booking.id) {
-      <li>
-        <p>
-          <strong>{{ booking.format.name }}</strong>
-          <span> {{ booking.date | date: 'fullDate' }} à {{ booking.time }} </span>
-        </p>
+      <li class="dap-card-cream flex items-center justify-between gap-4">
+        <div>
+          <strong class="block text-lg font-extrabold capitalize">
+            {{ booking.format.name }}
+          </strong>
+
+          <span class="mt-1 block text-sm leading-5 text-ink/70">
+            {{ booking.date | date: 'fullDate' }} à {{ booking.time }}
+          </span>
+        </div>
       </li>
+    } @empty {
+      <li class="mt-4 text-sm font-semibold text-ink/70">Aucune demande ouverte pour le moment.</li>
     }
   </ul>
 </fieldset>

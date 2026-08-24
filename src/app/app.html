@@ -1,14 +1,14 @@
-<header>
+<header class="flex flex-col items-center gap-4 text-center">
   <div>
-    <h1>Département des Affaires Personnelles</h1>
+    <h1 class="font-extrabold text-xl">Département des Affaires Personnelles</h1>
     <p><i>Service des affaires nécessitant exceptionnellement deux personnes.</i></p>
   </div>
 </header>
 
-<main>
+<main class="mt-6">
   <router-outlet />
 </main>
 
-<footer>
+<footer class="text-center mt-6">
   <small>&copy; {{ currentYear() }} - DAP (Administration fictive)</small>
 </footer>

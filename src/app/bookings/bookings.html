@@ -1,12 +1,24 @@
 <div ngTabs>
-  <div ngTabList [(selectedTab)]="selectedTab">
+  <nav
+    ngTabList
+    [(selectedTab)]="selectedTab"
+    class="dap-nav flex justify-center items-center gap-3"
+  >
     @for (tab of tabList(); track tab) {
-      <div ngTab [value]="tab">{{ tab | displayTabName }}</div>
+      <div
+        ngTab
+        [value]="tab"
+        class="rounded-xl px-4 py-2 text-sm font-extrabold transition cursor-pointer bg-gray-100"
+        [class.bg-yellow!]="selectedTab() === 'new_request' && tab === 'new_request'"
+        [class.bg-blue!]="selectedTab() === 'ongoing_requests' && tab === 'ongoing_requests'"
+      >
+        {{ tab | displayTabName }}
+      </div>
     }
-  </div>
+  </nav>
 
   @for (tab of tabList(); track tab) {
-    <div ngTabPanel [value]="tab">
+    <div ngTabPanel [value]="tab" class="mt-6">
       @if (tab === 'new_request') {
         <ng-template ngTabContent>
           <app-create-booking />
