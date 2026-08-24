@@ -1,1 +1,14 @@
-<router-outlet />
+<header>
+  <div>
+    <h1>Département des Affaires Personnelles</h1>
+    <p><i>Service des affaires nécessitant exceptionnellement deux personnes.</i></p>
+  </div>
+</header>
+
+<main>
+  <router-outlet />
+</main>
+
+<footer>
+  <small>&copy; {{ currentYear() }} - DAP (Administration fictive)</small>
+</footer>
