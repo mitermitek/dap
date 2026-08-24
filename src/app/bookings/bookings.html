@@ -1,0 +1,23 @@
+<div ngTabs>
+  <div ngTabList [(selectedTab)]="selectedTab">
+    @for (tab of tabList(); track tab) {
+      <div ngTab [value]="tab">{{ tab | displayTabName }}</div>
+    }
+  </div>
+
+  @for (tab of tabList(); track tab) {
+    <div ngTabPanel [value]="tab">
+      @if (tab === 'new_request') {
+        <ng-template ngTabContent>
+          <app-create-booking />
+        </ng-template>
+      }
+
+      @if (tab === 'ongoing_requests') {
+        <ng-template ngTabContent>
+          <app-booking-list />
+        </ng-template>
+      }
+    </div>
+  }
+</div>

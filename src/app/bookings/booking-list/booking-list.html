@@ -1,0 +1,14 @@
+<fieldset>
+  <legend>03 - Demandes en cours</legend>
+
+  <ul>
+    @for (booking of bookings(); track booking.id) {
+      <li>
+        <p>
+          <strong>{{ booking.format.name }}</strong>
+          <span> {{ booking.date | date: 'fullDate' }} à {{ booking.time }} </span>
+        </p>
+      </li>
+    }
+  </ul>
+</fieldset>

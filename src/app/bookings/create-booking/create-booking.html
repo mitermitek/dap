@@ -1,0 +1,51 @@
+<form [formRoot]="bookingForm">
+  <fieldset>
+    <legend>01 - Date et heure</legend>
+
+    <div>
+      <label for="booking-date">Date</label>
+      <input id="booking-date" type="date" [formField]="bookingForm.date" />
+    </div>
+
+    <div>
+      <label for="booking-time">Heure</label>
+      <input id="booking-time" type="time" [formField]="bookingForm.time" />
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>02 - Type de rencontre</legend>
+
+    <div>
+      @for (format of formats(); track format.id) {
+        <label [for]="`format-${format.id}`">
+          <input
+            [id]="`format-${format.id}`"
+            type="radio"
+            [value]="format.id"
+            [formField]="bookingForm.format_id"
+          />
+
+          <strong>{{ format.name }}</strong>
+          <span>{{ format.description }}</span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <button type="submit" [disabled]="bookingForm().invalid() || bookingForm().submitting()">
+    @if (bookingForm().submitting()) {
+      Transmission de la demande...
+    } @else {
+      Soumettre la demande
+    }
+  </button>
+</form>
+
+@if (successMessage()) {
+  <p role="status">{{ successMessage() }}</p>
+}
+
+@if (errorMessage()) {
+  <p role="alert">{{ errorMessage() }}</p>
+}
