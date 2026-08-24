@@ -36,4 +36,13 @@ export class BookingsService {
       throw error;
     }
   }
+
+  async removeBooking(id: string): Promise<void> {
+    const { error } = await this.supabase.from('bookings').delete().eq('id', id);
+
+    if (error) {
+      console.error('Error deleting booking:', error);
+      throw error;
+    }
+  }
 }
